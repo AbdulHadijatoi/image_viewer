@@ -1,4 +1,5 @@
-window.onload = function(){
-  // Here is how you would call the libary
-  PanZoom(".panzoom");
+window.onload = function() {
+    // Here is how you would call the libary
+    PanZoom(".panzoom");
+
 }
