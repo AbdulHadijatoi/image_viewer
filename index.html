@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <title>PanZoom Demo</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .zoomPhoto {
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        
+        .position-absolute {
+            position: absolute;
+        }
+        
+        .position-relative {
+            position: relative;
+        }
+        
+        .top-0 {
+            top: 0px;
+        }
+        
+        .left-0 {
+            left: 0px;
+        }
+        
+        .right-0 {
+            right: 0px;
+        }
+        
+        .bottom-0 {
+            bottom: 0px;
+        }
+        
+        .p-10 {
+            padding: 10px;
+        }
+        
+        .fadeSlider {
+            position: fixed;
+            top: 10px;
+            left: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .panzoom {
+            height: fit-content;
+        }
+        
+        .container {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panzoom">
+            <div id="imagesDiv" style="width: 100%; position: relative;">
+                <img class="zoomPhoto" id="image1" src="Ph1.jpeg" alt="Ph1.jpeg" style="z-index: 2">
+                <img class="zoomPhoto" id="image2" src="Ph2.png" alt="Ph2.png" style="z-index: 1">
+            </div>
+
+        </div>
+    </div>
+    <div class="fadeSlider"><input id="fadeSlider" type="range" min="0" max="100" value="100" onchange="fadeImage(this);"></div>
+    <script src="panzoom.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        var fd = document.getElementById('image1');
+        var rangeSlider = document.getElementById('fadeSlider');
+        var image1 = document.getElementById('image1');
+        var image2 = document.getElementById('image2');
+        var imagesDiv = document.getElementById('imagesDiv');
+        var ch = 0;
+
+        if (image1.clientHeight > image2.clientHeight) {
+            ch = image1.clientHeight;
+        } else {
+            ch = image2.clientHeight;
+        }
+
+        imagesDiv.style.height = ch + "px";
+
+        function fadeImage(elem) {
+            fd.style.opacity = (parseInt(elem.value) / 100);
+        }
+    </script>
+
+</body>
+
+</html>
